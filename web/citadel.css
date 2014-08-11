@@ -1,12 +1,25 @@
+body
+{
+	color: white;
+	background-color: black;
+	font-family: "Courier New";
+}
+
 canvas
 {
 	border: 1px solid red
 }
 
-.test
+.index
 {
 	text-align: center;
 	margin-left: auto;
-    margin-right: auto;
-    background-color: #b0e0e6;
+	margin-right: auto;
+	left: 50%;
+	top: 50%;
+	height: 70px;
+	width: 200px;
+	transform: translate(-50%,-50%);
+	-webkit-transform: translate(-50%,-50%);
+	position: absolute;
 }
