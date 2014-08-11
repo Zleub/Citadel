@@ -7,30 +7,24 @@ class Player
 
 	checkMinLevel(int level)
 	{
-		if (char_list.any( (elem)
+		return char_list.any( (elem)
 		{
 			if (elem.level != null && elem.level >= level)
 				return true;
 			else
 				return false;
-		}) == true)
-			return true;
-		else
-			return false;
+		});
 	}
 
 	checkChar(String name)
 	{
-		if (char_list.any((elem)
+		return char_list.any((elem)
 		{
-			if (elem.name == 'Isaac')
-				return true;
+			if (elem.name != null && elem.name == name)
+   				return true;
 			else
 				return false;
-		}) == true)
-			return true;
-		else
-			return false;
+		});
 	}
 
 	Player(String this.name)

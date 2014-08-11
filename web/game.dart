@@ -7,7 +7,7 @@ class Game
 
 	BodyElement			body;
 	DivElement			index;
-	DivElement			list;
+	DivElement			charlist;
 
 	indexCreate()
 	{
@@ -17,16 +17,19 @@ class Game
     	body.append(index);
 	}
 
-	createList()
+	listCreate()
 	{
-		new Future( () { list = new Element.div(); })
-		..then( (event) {
-			list.attributes['id'] = 'charlist';
-			list.attributes['class'] = 'charlist';
-			player.char_list.forEach( (character)
-			{
-					list.appendHtml('<br>' + character.toString());
-			});
+		charlist.attributes['id'] = 'charlist';
+        charlist.attributes['class'] = 'charlist';
+        body.append(charlist);
+	}
+
+	listWrite()
+	{
+		charlist.text = '';
+		player.char_list.forEach( (character)
+		{
+			charlist.appendHtml('<br>' + character.toString());
 		});
 	}
 
@@ -43,46 +46,57 @@ class Game
 		if (player.checkMinLevel(5) == true
 				&& player.checkChar('Isaac') == false)
         {
-   				player.char_list.add(new Character('Isaac'));
+   			player.char_list.add(new Character('Isaac'));
        	}
-	}
+		if (player.checkMinLevel(5) == true
+   				&& player.checkChar('Nadours') == false)
+        {
+			player.char_list.add(new Character('Nadours'));
+        }
+		if (player.checkMinLevel(5) == true
+        		&& player.checkChar('Mathours') == false)
+        {
+        	player.char_list.add(new Character('Mathours'));
+        }
+        if (player.checkMinLevel(5) == true
+         		&& player.checkChar('Chosours') == false)
+        {
+        	player.char_list.add(new Character('Chosours'));
+        }
+    }
 
 	runGame(Timer)
 	{
 		index.remove();
-		Future future = new Future(createList)
+		new Future( () { listWrite(); })
 		..then( (event)
 		{
-			DivElement	div;
-			new Future( () { div = document.querySelector('#charlist'); })
-			..then( (event)
-			{
-				if (div != null)
-					div.replaceWith(list);
-				else
-					body.append(list);
-				player.char_list.forEach( (elem) => elem.Increment());
-				player.char_list.forEach( (elem) => elem.updateCalendar());
-				eventVendredi();
-			});
+			player.char_list.forEach( (elem) => elem.Increment());
+			player.char_list.forEach( (elem) => elem.updateCalendar());
+			eventVendredi();
 		});
 	}
+
+//	printMap(Timer)
+//	{
+//		charlist.hidden = true;
+//		new Future( () { mapWrite(); })
+//	}
 
 	Game()
 	{
 		body = document.querySelector('body');
 
-		new Future( () { index = new Element.div(); })
+		new Future( () { index = new DivElement(); charlist = new DivElement(); })
 		..then( (event) {
 			indexCreate();
+			listCreate();
 			InputElement input = document.querySelector('#index');
 	    	input.onChange.listen( (event)
 	    	{
 				player = new Player(input.value);
 				index.text = "Loading";
-
-//						print(calendar.datalist.);
-						new Timer.periodic(new Duration(milliseconds: 80), runGame);
+				new Timer.periodic(new Duration(milliseconds: 80), runGame);
 			});
 	  	});
 	}
