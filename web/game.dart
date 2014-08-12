@@ -8,8 +8,9 @@ class Game
 	BodyElement			body;
 	DivElement			index;
 	DivElement			charlist;
+	CanvasElement		map;
 
-	indexCreate()
+	indexInit()
 	{
 		index.appendHtml('Hi.<br>What\'s your name ?<br>');
 		index.appendHtml('<input id="index" autofocus>');
@@ -17,11 +18,18 @@ class Game
     	body.append(index);
 	}
 
-	listCreate()
+	listInit()
 	{
 		charlist.attributes['id'] = 'charlist';
         charlist.attributes['class'] = 'charlist';
         body.append(charlist);
+	}
+
+	mapInit()
+	{
+		map.attributes['height'] = '500px';
+		map.attributes['width'] = '500px';
+		body.append(map);
 	}
 
 	listWrite()
@@ -43,6 +51,10 @@ class Game
 				player.char_list.add(new Character('Vendredi'));
 			}
 		}
+	}
+
+	eventChars()
+	{
 		if (player.checkMinLevel(5) == true
 				&& player.checkChar('Isaac') == false)
         {
@@ -74,6 +86,7 @@ class Game
 			player.char_list.forEach( (elem) => elem.Increment());
 			player.char_list.forEach( (elem) => elem.updateCalendar());
 			eventVendredi();
+			eventChars();
 		});
 	}
 
@@ -87,10 +100,12 @@ class Game
 	{
 		body = document.querySelector('body');
 
-		new Future( () { index = new DivElement(); charlist = new DivElement(); })
-		..then( (event) {
-			indexCreate();
-			listCreate();
+		new Future( () { index = new DivElement(); charlist = new DivElement(); map = new CanvasElement(); })
+		..then( (event)
+		{
+			indexInit();
+			listInit();
+			mapInit();
 			InputElement input = document.querySelector('#index');
 	    	input.onChange.listen( (event)
 	    	{

@@ -1,0 +1,16 @@
+{
+  "citadel": [
+    {
+      "name": "Wilderness",
+      "requirement": "none",
+      "color": "red",
+      "graphic": "#"
+    },
+    {
+      "name": "Fort",
+      "requirement": "Wilderness",
+      "color": "red",
+      "graphic": "#"
+    }
+  ]
+}

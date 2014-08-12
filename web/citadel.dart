@@ -14,5 +14,13 @@ part 'character.dart';
 
 void main()
 {
-	new Game();
+	HttpRequest.getString('data/biomes.json')
+		.then( (String string)
+		{
+			Map data = JSON.decode(string);
+			print(data['citadel'][0]);
+		});
+
+
+//	new Game();
 }
