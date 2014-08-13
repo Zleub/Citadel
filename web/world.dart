@@ -191,7 +191,7 @@ class World
             int		y = player.char_list.first.getRand(sizeWorld);
             int		biome = player.char_list.first.getRand(_ground.length);
 //            if (mapWorld[x + y * sizeWorld] == null)
-            	drawCircle(x, y, 3, _ground.elementAt(biome));
+            	drawCircle(x, y, 2, _ground.elementAt(biome));
             biomeNbr -= 1;
         }
 	}

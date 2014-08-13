@@ -71,7 +71,7 @@ class Character
 
 	toString()
 	{
-		return (name.padLeft(15, "&nbsp;") + ", "
+		return ("<span class=\"character\">" + name.padLeft(15, "&nbsp;") + "</span>, "
 				+ state.keys.first.padLeft(7, "&nbsp;")
 				+ ", lvl: " + level.toString()
 				+ ", xp: " + experience.toString().padRight(6, "&nbsp;")

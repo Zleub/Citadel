@@ -31,6 +31,11 @@ class Game
 
 			}
 		});
+
+		document.querySelector('.character').onMouseOver.listen( (event)
+		{
+			print(event);
+		});
 	}
 
 	indexInit()
