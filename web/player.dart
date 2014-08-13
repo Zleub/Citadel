@@ -4,6 +4,7 @@ class Player
 {
 	String			name;
 	List<Character>	char_list;
+//	Random			rand;
 
 	checkMinLevel(int level)
 	{

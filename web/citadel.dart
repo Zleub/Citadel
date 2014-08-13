@@ -11,16 +11,10 @@ part 'game.dart';
 part 'calendar.dart';
 part 'player.dart';
 part 'character.dart';
+part 'biome.dart';
+part 'world.dart';
 
 void main()
 {
-	HttpRequest.getString('data/biomes.json')
-		.then( (String string)
-		{
-			Map data = JSON.decode(string);
-			print(data['citadel'][0]);
-		});
-
-
-//	new Game();
+	new Game();
 }

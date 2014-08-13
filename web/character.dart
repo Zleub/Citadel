@@ -11,6 +11,7 @@ class Character
 	Calendar	calendar;
 	Map			state;
 	int			ticks;
+	Random		rand;
 
 	NametoHash()
 	{
@@ -25,12 +26,12 @@ class Character
 
 	getRand(int max)
 	{
-		if (hash == null || hash.isEmpty)
-        			NametoHash();
-//		int nbr = new Random(hash).nextInt(max);
-		int	nbr = hash.last;
-		hash.removeLast();
-		return (nbr % max);
+//		if (hash == null || hash.isEmpty)
+//        			NametoHash();
+
+//		int	nbr = hash.last;
+//		hash.removeLast();
+		return (rand.nextInt(max));
 	}
 
 	Check()
@@ -78,6 +79,27 @@ class Character
 				+ "cmp: " + time.toString().padRight(5, "&nbsp;"));
 	}
 
+	hashName()
+	{
+		int				hash;
+		int				c;
+		int				i;
+
+		hash = 5381;
+		i = 0;
+		while (i < name.length)
+		{
+			c = name.codeUnitAt(i);
+			hash = ((hash << 5) + hash) ^ c;
+			i += 1;
+		}
+		print("hash: " + hash.toString());
+		if (hash < 0)
+			return (hash * -1);
+		else
+			return (hash);
+	}
+
 	Character(String this.name)
 	{
 		new Calendar()
@@ -85,11 +107,12 @@ class Character
         {
         	this.calendar = calendar;
         	this.state = this.calendar.datalist.first;
-			experience = 0;
-			level = 1;
-			age = 15;
-			time = 0;
-			ticks = 0;
         });
+		experience = 0;
+		level = 1;
+		age = 15;
+		time = 0;
+		ticks = 0;
+        rand = new Random(hashName());
 	}
 }

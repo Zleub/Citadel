@@ -4,11 +4,34 @@ class Game
 {
 	Player				player;
 	Calendar			calendar;
+	World				world;
 
 	BodyElement			body;
 	DivElement			index;
 	DivElement			charlist;
-	CanvasElement		map;
+	DivElement			map;
+
+	keyEvent()
+	{
+		window.onKeyDown.listen( (event)
+		{
+//			print(event.keyCode);
+			if (event.keyCode == 77)
+			{
+				if (map.hidden == true)
+				{
+					charlist.hidden = true;
+					map.hidden = false;
+				}
+				else
+				{
+					map.hidden = true;
+					charlist.hidden = false;
+				}
+
+			}
+		});
+	}
 
 	indexInit()
 	{
@@ -27,8 +50,10 @@ class Game
 
 	mapInit()
 	{
-		map.attributes['height'] = '500px';
-		map.attributes['width'] = '500px';
+		map.attributes['id'] = 'map';
+//		map.attributes['height'] = '500px';
+//		map.attributes['width'] = '500px';
+		map.hidden = true;
 		body.append(map);
 	}
 
@@ -38,6 +63,26 @@ class Game
 		player.char_list.forEach( (character)
 		{
 			charlist.appendHtml('<br>' + character.toString());
+		});
+	}
+
+	mapWrite()
+	{
+		int		i;
+		map.text = '';
+		i = 0;
+
+		String test = "";
+
+		world.mapWorld.forEach( (elem)
+		{
+			if (elem == null)
+				map.appendHtml("&nbsp;&nbsp;&nbsp;");
+			else
+				map.appendHtml("&nbsp;" + elem.toString() + "&nbsp;");
+			i += 1;
+			if (i % world.sizeWorld == 0)
+				map.appendHtml("<br>");
 		});
 	}
 
@@ -60,17 +105,17 @@ class Game
         {
    			player.char_list.add(new Character('Isaac'));
        	}
-		if (player.checkMinLevel(5) == true
+		if (player.checkMinLevel(10) == true
    				&& player.checkChar('Nadours') == false)
         {
 			player.char_list.add(new Character('Nadours'));
         }
-		if (player.checkMinLevel(5) == true
+		if (player.checkMinLevel(15) == true
         		&& player.checkChar('Mathours') == false)
         {
         	player.char_list.add(new Character('Mathours'));
         }
-        if (player.checkMinLevel(5) == true
+        if (player.checkMinLevel(20) == true
          		&& player.checkChar('Chosours') == false)
         {
         	player.char_list.add(new Character('Chosours'));
@@ -90,29 +135,42 @@ class Game
 		});
 	}
 
-//	printMap(Timer)
-//	{
-//		charlist.hidden = true;
-//		new Future( () { mapWrite(); })
-//	}
+	Future GameInit()
+	{
+		return new Future ( ()
+			{
+				index = new DivElement();
+				charlist = new DivElement();
+				map = new DivElement();
+			}).then( (event)
+			{
+				indexInit();
+                listInit();
+                mapInit();
+			});
+	}
 
 	Game()
 	{
 		body = document.querySelector('body');
 
-		new Future( () { index = new DivElement(); charlist = new DivElement(); map = new CanvasElement(); })
-		..then( (event)
+		GameInit().then( (event)
 		{
-			indexInit();
-			listInit();
-			mapInit();
 			InputElement input = document.querySelector('#index');
 	    	input.onChange.listen( (event)
 	    	{
-				player = new Player(input.value);
 				index.text = "Loading";
-				new Timer.periodic(new Duration(milliseconds: 80), runGame);
-			});
-	  	});
+				player = new Player(input.value);
+				world = new World(player)
+				..onLoad().then( (event)
+				{
+					print('Timer Begin');
+					mapWrite();
+					keyEvent();
+					new Timer.periodic(new Duration(milliseconds: 80), runGame);
+
+				});
+	    	});
+    	});
 	}
 }

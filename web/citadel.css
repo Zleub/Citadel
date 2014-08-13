@@ -5,11 +5,12 @@
 	font-family: "Courier New";
 }
 
-canvas
+/*
+#map
 {
 	border: 1px solid red
 }
-
+*/
 .index
 {
 	text-align: center;
@@ -22,4 +23,29 @@ canvas
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
 	position: absolute;
+}
+
+.Wilderness
+{
+	color: red;
+}
+
+.Lac
+{
+	color: lightblue;
+}
+
+.Forest
+{
+	color: green;
+}
+
+.Hill
+{
+	color: brown;
+}
+
+.Plain
+{
+	color: lightgreen;
 }
