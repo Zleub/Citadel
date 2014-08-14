@@ -1,0 +1,21 @@
+{
+  "name": "Miner",
+  "location": "Hill",
+  "requirement":
+  [
+    {
+      "level": "5"
+    }
+  ],
+  "actions":
+  [
+    {
+      "name": "Mining",
+      "requirement": "none",
+      "time": 100,
+      "skill_shape": "all",
+      "skill_loot": "stamina",
+      "skill_rand": 1
+    }
+  ]
+}

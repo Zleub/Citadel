@@ -8,14 +8,12 @@
 .charlist, .map
 {
 	float: left;
-	border: 1px solid red;
 }
 
 .menu
 {
 	width: 30%;
 	float: right;
-	border-left: 1px solid white;
 }
 
 .index
@@ -30,6 +28,17 @@
 	transform: translate(-50%,-50%);
 	-webkit-transform: translate(-50%,-50%);
 	position: absolute;
+}
+
+.droppiece
+{
+	display: none;
+}
+
+#dropdown:hover .droppiece, .droppiece:hover
+{
+	opacity: 0.9;
+	display: block;
 }
 
 .Wilderness
