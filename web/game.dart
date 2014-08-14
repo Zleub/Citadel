@@ -156,6 +156,7 @@ class Game
   				if (test.length == 1)
    				{
    					menu.hidden = true;
+   					charlist.style.height = "100%";
    				}
    			});
    		});

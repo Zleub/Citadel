@@ -8,11 +8,13 @@ class Job
 
 	Map			data;
 
+	Job(String this.name);
+
 	Future onLoad()
 	{
 		_completer = new Completer();
 
-   		HttpRequest.getString('data/rover.json')
+   		HttpRequest.getString('data/' + name + '.json')
    			.then( (String string)
    			{
 				data = JSON.decode(string);

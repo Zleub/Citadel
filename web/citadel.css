@@ -7,14 +7,15 @@
 
 .charlist, .map
 {
-	width: 60%;
 	float: left;
+	border: 1px solid red;
 }
 
 .menu
 {
 	width: 30%;
 	float: right;
+	border-left: 1px solid white;
 }
 
 .index

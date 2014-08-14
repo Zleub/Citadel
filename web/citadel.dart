@@ -17,12 +17,16 @@ part 'world.dart';
 
 void main()
 {
-	new Game();
+//	new Game();
 
-//	Job test = new Job();
+//	List<String> job_list = ['rover'];
 //
-//	test.onLoad().then( (event)
+//	job_list.forEach( (elem)
 //	{
-//		print(test.data.toString());
+//		Job test = new Job(elem);
+//		test.onLoad().then( (event)
+//		{
+//        	print(test.data['name']);
+//        });
 //	});
 }
