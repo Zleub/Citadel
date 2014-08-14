@@ -5,12 +5,18 @@
 	font-family: "Courier New";
 }
 
-/*
-#map
+.charlist, .map
 {
-	border: 1px solid red
+	width: 60%;
+	float: left;
 }
-*/
+
+.menu
+{
+	width: 30%;
+	float: right;
+}
+
 .index
 {
 	text-align: center;

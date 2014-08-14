@@ -4,14 +4,25 @@ class Character
 {
 	String		name;
 	List<int>	hash;
+
 	int			experience;
 	int			level;
 	int			age;
+
 	int			time;
 	Calendar	calendar;
 	Map			state;
 	int			ticks;
 	Random		rand;
+
+	int			strength;
+	int			stamina;
+	int			agility;
+	int			dexterity;
+	int			intelligence;
+	int			charisma;
+	int			wisdom;
+	int			will;
 
 	NametoHash()
 	{
@@ -62,6 +73,28 @@ class Character
 
 	Increment()
 	{
+		if (ticks % 100 == 0 && state.keys.first == 'spare')
+		{
+			int		tmp1 = getRand(8);
+			int		tmp2 = getRand(2);
+
+			if (tmp1 == 0)
+				strength += tmp2;
+			if (tmp1 == 1)
+   				stamina += tmp2;
+			if (tmp1 == 2)
+            	agility += tmp2;
+			if (tmp1 == 3)
+   				dexterity += tmp2;
+			if (tmp1 == 4)
+				intelligence += tmp2;
+			if (tmp1 == 5)
+   				charisma += tmp2;
+			if (tmp1 == 6)
+            	wisdom += tmp2;
+			if (tmp1 == 7)
+   				will += tmp2;
+		}
 		if (ticks % 10 == 0)
 			experience += 1;
 		time += 1;
@@ -71,7 +104,7 @@ class Character
 
 	toString()
 	{
-		return ("<span class=\"character\">" + name.padLeft(15, "&nbsp;") + "</span>, "
+		return (("<span class=\"character\">" + name + "</span>").padLeft(40, "&nbsp;") + ", "
 				+ state.keys.first.padLeft(7, "&nbsp;")
 				+ ", lvl: " + level.toString()
 				+ ", xp: " + experience.toString().padRight(6, "&nbsp;")
@@ -113,6 +146,14 @@ class Character
 		age = 15;
 		time = 0;
 		ticks = 0;
-        rand = new Random(hashName());
+		strength = 0;
+    	stamina = 0;
+    	agility = 0;
+    	dexterity = 0;
+    	intelligence = 0;
+    	charisma = 0;
+    	wisdom = 0;
+    	will = 0;
+    	rand = new Random(hashName());
 	}
 }

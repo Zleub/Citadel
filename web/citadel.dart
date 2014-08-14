@@ -11,10 +11,18 @@ part 'game.dart';
 part 'calendar.dart';
 part 'player.dart';
 part 'character.dart';
+part 'job.dart';
 part 'biome.dart';
 part 'world.dart';
 
 void main()
 {
 	new Game();
+
+//	Job test = new Job();
+//
+//	test.onLoad().then( (event)
+//	{
+//		print(test.data.toString());
+//	});
 }

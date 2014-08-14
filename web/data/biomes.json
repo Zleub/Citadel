@@ -38,7 +38,7 @@
       "name": "Forest",
       "requirement": "none",
       "shape": "circle",
-      "graphic": "|"
+      "graphic": "¥"
     },
     {
       "name": "Hill",
