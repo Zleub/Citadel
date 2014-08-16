@@ -8,6 +8,9 @@ class Character
 	int			experience;
 	int			level;
 	int			age;
+	Job			job;
+	List<Job>	job_list;
+	List<Job>	clean_job_list;
 
 	int			time;
 	Calendar	calendar;
@@ -71,6 +74,33 @@ class Character
 		}
 	}
 
+	updateJoblist()
+	{
+		job_list.forEach( (job)
+		{
+			if (clean_job_list.contains(job))
+				;
+			else if (job.data['requirement'] != 'none')
+			{
+				List<Map> test = job.data['requirement'];
+				test.forEach( (test)
+				{
+					if (test.keys.first == 'level')
+					{
+						String demerde = test.values.first;
+						int nbr = int.parse(demerde);
+						if (nbr <= level)
+						{
+							clean_job_list.add(job);
+						}
+					}
+				});
+			}
+			else
+				clean_job_list.add(job);
+		});
+	}
+
 	Increment()
 	{
 		if (ticks % 100 == 0 && state.keys.first == 'spare')
@@ -102,15 +132,15 @@ class Character
 		Check();
 	}
 
-	toString()
-	{
-		return (("<span class=\"character\">" + name + "</span>").padLeft(40, "&nbsp;") + ", "
-				+ state.keys.first.padLeft(7, "&nbsp;")
-				+ ", lvl: " + level.toString()
-				+ ", xp: " + experience.toString().padRight(6, "&nbsp;")
-				+ " age: " + age.toString().padRight(3, "&nbsp;")
-				+ "cmp: " + time.toString().padRight(5, "&nbsp;"));
-	}
+//	toString()
+//	{
+//		return (("<span class=\"character\">" + name + "</span>").padLeft(40, "&nbsp;") + ", "
+//				+ state.keys.first.padLeft(7, "&nbsp;")
+//				+ ", lvl: " + level.toString()
+//				+ ", xp: " + experience.toString().padRight(6, "&nbsp;")
+//				+ " age: " + age.toString().padRight(3, "&nbsp;")
+//				+ "cmp: " + time.toString().padRight(5, "&nbsp;"));
+//	}
 
 	hashName()
 	{
@@ -140,7 +170,27 @@ class Character
         {
         	this.calendar = calendar;
         	this.state = this.calendar.datalist.first;
+        	print(calendar.datalist[0]);
         });
+		List<String> job_slist = ['rover', 'farmer', 'miner'];
+		List<Future> job_flist = new List();
+		job_list = new List();
+		clean_job_list = new List();
+
+		Future.forEach(job_slist, (str)
+		{
+			Job tmp = new Job(str);
+			job_list.add(tmp);
+			job_flist.add(tmp.onLoad());
+		}).then( (event)
+		{
+			Future.wait(job_flist)
+			.then( (elem)
+			{
+				job = job_list.first;
+			});
+		});
+
 		experience = 0;
 		level = 1;
 		age = 15;

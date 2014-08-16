@@ -1,0 +1,21 @@
+{
+	"name": "Rover",
+	"location": "Wilderness",
+	"requirement": "none",
+	"actions": [
+		{
+			"name": "Idling",
+			"time": 20,
+			"skill_shape": "unique",
+			"skill_loot": "random",
+			"skill_rand": 1
+		},
+		{
+			"name": "Gathering thing around",
+			"time": 50,
+			"skill_shape": "unique",
+			"skill_loot": "random",
+			"skill_rand": 2
+		}
+	]
+}

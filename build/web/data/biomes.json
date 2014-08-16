@@ -1,0 +1,50 @@
+{
+  "citadel": [
+    {
+      "name": "Wilderness",
+      "requirement": "none",
+      "shape": "unique",
+      "graphic": "#"
+    },
+    {
+      "name": "Fort",
+      "requirement": "Wilderness",
+      "shape": "unique",
+      "graphic": "#"
+    }
+  ],
+  "water": [
+    {
+      "name": "Lac",
+      "requirement": "none",
+      "shape": "circle",
+      "graphic": "~"
+    }
+  ],
+  "ground": [
+    {
+      "name": "Plain",
+      "requirement": "none",
+      "shape": "fill",
+      "graphic": "_"
+    },
+    {
+      "name": "Mountain",
+      "requirement": "none",
+      "shape": "mountain",
+      "graphic": "^"
+    },
+    {
+      "name": "Forest",
+      "requirement": "none",
+      "shape": "circle",
+      "graphic": "¥"
+    },
+    {
+      "name": "Hill",
+      "requirement": "none",
+      "shape": "circle",
+      "graphic": "^"
+    }
+  ]
+}
