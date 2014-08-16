@@ -40,6 +40,11 @@
 	display: block;
 }
 
+.menu_stat_span
+{
+	display: block;
+}
+
 .Wilderness
 {
 	color: red;

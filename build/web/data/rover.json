@@ -6,7 +6,7 @@
 		{
 			"name": "Idling",
 			"time": 20,
-			"skill_shape": "unique",
+			"skill_shape": "all",
 			"skill_loot": "random",
 			"skill_rand": 1
 		},

@@ -3257,7 +3257,7 @@ var $$ = {};
     }
   },
   Character: {
-    "^": "Object;name>,hash,experience,level<,age,job@,job_list,clean_job_list<,time,calendar,state>,ticks<,rand,strength,stamina,agility,dexterity,intelligence,charisma,wisdom,will",
+    "^": "Object;name>,hash,experience,level<,age,job@,job_list,clean_job_list<,time,calendar,state>,ticks<,rand,strength<,stamina<,agility<,dexterity<,intelligence<,charisma<,wisdom<,will<",
     getRand$1: function(max) {
       return this.rand.nextInt$1(max);
     },
@@ -3428,7 +3428,7 @@ var $$ = {};
       H.IterableMixinWorkaround_forEach(this.player.char_list, new X.Game_listWrite_closure(this));
     },
     menuWrite$0: function() {
-      var name_span, dropdown, t1;
+      var name_span, dropdown, t1, strength_span, stamina_span, agility_span, dexterity_span, intelligence_span, charisma_span, wisdom_span, will_span;
       if (this.charmenu != null) {
         name_span = this.menu.querySelector("#menu_name");
         if (name_span == null) {
@@ -3451,6 +3451,86 @@ var $$ = {};
           this.menu.appendChild(dropdown);
         } else
           H.IterableMixinWorkaround_forEach(this.charmenu.get$clean_job_list(), new X.Game_menuWrite_closure(this, dropdown));
+        strength_span = this.menu.querySelector("#menu_strength");
+        if (strength_span == null) {
+          strength_span = document.createElement("span", null);
+          strength_span.setAttribute("id", "menu_strength");
+          strength_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(strength_span);
+        } else {
+          strength_span.textContent = "";
+          J.insertAdjacentHtml$2$x(strength_span, "beforeend", "Strength: " + C.JSInt_methods.toString$0(this.charmenu.get$strength()));
+        }
+        stamina_span = this.menu.querySelector("#menu_stamina");
+        if (stamina_span == null) {
+          stamina_span = document.createElement("span", null);
+          stamina_span.setAttribute("id", "menu_stamina");
+          stamina_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(stamina_span);
+        } else {
+          stamina_span.textContent = "";
+          J.insertAdjacentHtml$2$x(stamina_span, "beforeend", "Stamina: " + C.JSInt_methods.toString$0(this.charmenu.get$stamina()));
+        }
+        agility_span = this.menu.querySelector("#menu_agility");
+        if (agility_span == null) {
+          agility_span = document.createElement("span", null);
+          agility_span.setAttribute("id", "menu_agility");
+          agility_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(agility_span);
+        } else {
+          agility_span.textContent = "";
+          J.insertAdjacentHtml$2$x(agility_span, "beforeend", "Agility: " + C.JSInt_methods.toString$0(this.charmenu.get$agility()));
+        }
+        dexterity_span = this.menu.querySelector("#menu_dexterity");
+        if (dexterity_span == null) {
+          dexterity_span = document.createElement("span", null);
+          dexterity_span.setAttribute("id", "menu_dexterity");
+          dexterity_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(dexterity_span);
+        } else {
+          dexterity_span.textContent = "";
+          J.insertAdjacentHtml$2$x(dexterity_span, "beforeend", "Dexterity: " + C.JSInt_methods.toString$0(this.charmenu.get$dexterity()));
+        }
+        intelligence_span = this.menu.querySelector("#menu_intelligence");
+        if (intelligence_span == null) {
+          intelligence_span = document.createElement("span", null);
+          intelligence_span.setAttribute("id", "menu_intelligence");
+          intelligence_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(intelligence_span);
+        } else {
+          intelligence_span.textContent = "";
+          J.insertAdjacentHtml$2$x(intelligence_span, "beforeend", "Intelligence: " + C.JSInt_methods.toString$0(this.charmenu.get$intelligence()));
+        }
+        charisma_span = this.menu.querySelector("#menu_charisma");
+        if (charisma_span == null) {
+          charisma_span = document.createElement("span", null);
+          charisma_span.setAttribute("id", "menu_charisma");
+          charisma_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(charisma_span);
+        } else {
+          charisma_span.textContent = "";
+          J.insertAdjacentHtml$2$x(charisma_span, "beforeend", "Charisma: " + C.JSInt_methods.toString$0(this.charmenu.get$charisma()));
+        }
+        wisdom_span = this.menu.querySelector("#menu_wisdom");
+        if (wisdom_span == null) {
+          wisdom_span = document.createElement("span", null);
+          wisdom_span.setAttribute("id", "menu_wisdom");
+          wisdom_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(wisdom_span);
+        } else {
+          wisdom_span.textContent = "";
+          J.insertAdjacentHtml$2$x(wisdom_span, "beforeend", "Wisdom: " + C.JSInt_methods.toString$0(this.charmenu.get$wisdom()));
+        }
+        will_span = this.menu.querySelector("#menu_will");
+        if (will_span == null) {
+          will_span = document.createElement("span", null);
+          will_span.setAttribute("id", "menu_will");
+          will_span.setAttribute("class", "menu_stat_span");
+          this.menu.appendChild(will_span);
+        } else {
+          will_span.textContent = "";
+          J.insertAdjacentHtml$2$x(will_span, "beforeend", "Will: " + C.JSInt_methods.toString$0(this.charmenu.get$will()));
+        }
       }
     },
     mapWrite$0: function() {
@@ -13730,6 +13810,30 @@ function dart_precompiled($collectedClasses) {
   };
   Character.prototype.get$ticks = function() {
     return this.ticks;
+  };
+  Character.prototype.get$strength = function() {
+    return this.strength;
+  };
+  Character.prototype.get$stamina = function() {
+    return this.stamina;
+  };
+  Character.prototype.get$agility = function() {
+    return this.agility;
+  };
+  Character.prototype.get$dexterity = function() {
+    return this.dexterity;
+  };
+  Character.prototype.get$intelligence = function() {
+    return this.intelligence;
+  };
+  Character.prototype.get$charisma = function() {
+    return this.charisma;
+  };
+  Character.prototype.get$wisdom = function() {
+    return this.wisdom;
+  };
+  Character.prototype.get$will = function() {
+    return this.will;
   };
   function Character_updateJoblist_closure(this_0) {
     this.this_0 = this_0;

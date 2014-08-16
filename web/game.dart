@@ -196,6 +196,149 @@ class Game
 				});
 			}
 
+			Element strength_span = menu.querySelector('#menu_strength');
+			if (strength_span == null)
+			{
+				strength_span = new SpanElement();
+                strength_span.attributes['id'] = 'menu_strength';
+                strength_span.attributes['class'] = 'menu_stat_span';
+                menu.append(strength_span);
+			}
+			else
+			{
+				strength_span.text = '';
+                strength_span.appendHtml('Strength: ' + charmenu.strength.toString());
+			}
+
+			Element stamina_span = menu.querySelector('#menu_stamina');
+			if (stamina_span == null)
+			{
+				stamina_span = new SpanElement();
+                stamina_span.attributes['id'] = 'menu_stamina';
+                stamina_span.attributes['class'] = 'menu_stat_span';
+                menu.append(stamina_span);
+			}
+			else
+			{
+				stamina_span.text = '';
+                stamina_span.appendHtml('Stamina: ' + charmenu.stamina.toString());
+			}
+
+			Element agility_span = menu.querySelector('#menu_agility');
+			if (agility_span == null)
+			{
+				agility_span = new SpanElement();
+                agility_span.attributes['id'] = 'menu_agility';
+                agility_span.attributes['class'] = 'menu_stat_span';
+                menu.append(agility_span);
+			}
+			else
+			{
+				agility_span.text = '';
+                agility_span.appendHtml('Agility: ' + charmenu.agility.toString());
+			}
+
+			Element dexterity_span = menu.querySelector('#menu_dexterity');
+			if (dexterity_span == null)
+			{
+				dexterity_span = new SpanElement();
+                dexterity_span.attributes['id'] = 'menu_dexterity';
+                dexterity_span.attributes['class'] = 'menu_stat_span';
+                menu.append(dexterity_span);
+			}
+			else
+			{
+				dexterity_span.text = '';
+                dexterity_span.appendHtml('Dexterity: ' + charmenu.dexterity.toString());
+			}
+
+			Element intelligence_span = menu.querySelector('#menu_intelligence');
+			if (intelligence_span == null)
+			{
+				intelligence_span = new SpanElement();
+                intelligence_span.attributes['id'] = 'menu_intelligence';
+                intelligence_span.attributes['class'] = 'menu_stat_span';
+                menu.append(intelligence_span);
+			}
+			else
+			{
+				intelligence_span.text = '';
+                intelligence_span.appendHtml('Intelligence: ' + charmenu.intelligence.toString());
+			}
+
+			Element charisma_span = menu.querySelector('#menu_charisma');
+			if (charisma_span == null)
+			{
+				charisma_span = new SpanElement();
+                charisma_span.attributes['id'] = 'menu_charisma';
+                charisma_span.attributes['class'] = 'menu_stat_span';
+                menu.append(charisma_span);
+			}
+			else
+			{
+				charisma_span.text = '';
+                charisma_span.appendHtml('Charisma: ' + charmenu.charisma.toString());
+			}
+
+			Element wisdom_span = menu.querySelector('#menu_wisdom');
+			if (wisdom_span == null)
+			{
+				wisdom_span = new SpanElement();
+                wisdom_span.attributes['id'] = 'menu_wisdom';
+                wisdom_span.attributes['class'] = 'menu_stat_span';
+                menu.append(wisdom_span);
+			}
+			else
+			{
+				wisdom_span.text = '';
+                wisdom_span.appendHtml('Wisdom: ' + charmenu.wisdom.toString());
+			}
+
+			Element will_span = menu.querySelector('#menu_will');
+			if (will_span == null)
+			{
+				will_span = new SpanElement();
+                will_span.attributes['id'] = 'menu_will';
+                will_span.attributes['class'] = 'menu_stat_span';
+                menu.append(will_span);
+			}
+			else
+			{
+				will_span.text = '';
+                will_span.appendHtml('Will: ' + charmenu.will.toString());
+			}
+
+//			Element dropdown = menu.querySelector('#menu_dropdown');
+//			if (dropdown == null)
+//			{
+//				Element dropdown = new Element.nav();
+//				dropdown.attributes['id'] = 'menu_dropdown';
+//				dropdown.attributes['class'] = 'dropdown';
+//				dropdown.style.float = 'Right';
+//				dropdown.appendHtml("Jobs" + '<br');
+//				dropdown_listen(dropdown);
+//				menu.append(dropdown);
+//			}
+//			else
+//			{
+//				charmenu.clean_job_list.forEach( (elem)
+//				{
+//					Element droppiece = dropdown.querySelector('#menu_' + elem.data['name']);
+//					if (droppiece == null)
+//					{
+//						droppiece = new Element.span();
+//						droppiece.attributes['id'] = 'menu_' + elem.data['name'];
+//						droppiece.attributes['class'] = 'droppiece';
+//						droppiece_listen(droppiece);
+//						dropdown.append(droppiece);
+//					}
+//					else
+//					{
+//						droppiece.text = elem.data['name'];
+//					}
+//				});
+//			}
+
 
 //			Element dropdown = new Element.nav();
 //			dropdown.attributes['id'] = 'dropdown';
