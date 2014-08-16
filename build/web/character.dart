@@ -132,70 +132,6 @@ class Character
 		Check();
 	}
 
-	Print()
-	{
-		DivElement char_list = document.body.querySelector('#charlist');
-		DivElement char_div = char_list.querySelector('#' + name);
-		if (char_div == null)
-		{
-			char_div = new DivElement();
-			char_div.attributes['id'] = name;
-			char_div.attributes['class'] = 'char_div';
-			char_list.append(char_div);
-		}
-		else
-		{
-			SpanElement name_span = char_div.querySelector('#name');
-			if (name_span == null)
-			{
-				name_span = new SpanElement();
-				name_span.attributes['id'] = 'name';
-				name_span.attributes['class'] = 'name_span';
-       			char_div.append(name_span);
-			}
-			else
-			{
-				name_span.text = '';
-				name_span.appendHtml(name.padLeft(15, "&nbsp") + ' ');
-			}
-
-			SpanElement job_span = char_div.querySelector('#job');
-			{
-				if (job_span == null)
-    			{
-    				job_span = new SpanElement();
-                    job_span.attributes['id'] = 'job';
-                    job_span.attributes['class'] = 'job_span';
-                    char_div.append(job_span);
-    			}
-    			else
-    				job_span.text = job.data['name'] + ' ';
-			}
-
-			SpanElement level_span = char_div.querySelector('#level');
-   			if (level_span == null)
-   			{
-   				level_span = new SpanElement();
-   				level_span.attributes['id'] = 'level';
-   				level_span.attributes['class'] = 'level_span';
-                char_div.append(level_span);
-   			}
-   			else
-   				level_span.text = 'level: ' + level.toString() + ' ';
-
-			SpanElement xp_span = char_div.querySelector('#xp');
-			if (xp_span == null)
-			{
-				xp_span = new SpanElement();
-                xp_span.attributes['id'] = 'xp';
-                xp_span.attributes['class'] = 'xp_span';
-                char_div.append(xp_span);
-			}
-			else
-				xp_span.text = experience.toString();
-		}
-	}
-
 //	toString()
 //	{
 //		return (("<span class=\"character\">" + name + "</span>").padLeft(40, "&nbsp;") + ", "
@@ -234,6 +170,7 @@ class Character
         {
         	this.calendar = calendar;
         	this.state = this.calendar.datalist.first;
+        	print(calendar.datalist[0]);
         });
 		List<String> job_slist = ['rover', 'farmer', 'miner'];
 		List<Future> job_flist = new List();

@@ -58,8 +58,6 @@ class Game
 	{
 		map.attributes['id'] = 'map';
 		map.attributes['class'] = 'map';
-//		map.attributes['height'] = '500px';
-//		map.attributes['width'] = '500px';
 		map.hidden = true;
 		body.append(map);
 	}
@@ -76,8 +74,76 @@ class Game
 	{
 		player.char_list.forEach( (character)
 		{
-//			print('character.print');
-			character.Print();
+			DivElement char_list = document.body.querySelector('#charlist');
+       		DivElement char_div = char_list.querySelector('#' + character.name);
+       		if (char_div == null)
+       		{
+       			char_div = new DivElement();
+       			char_div.attributes['id'] = character.name;
+       			char_div.attributes['class'] = 'char_div';
+       			char_list.append(char_div);
+       		}
+       		else
+       		{
+       			SpanElement name_span = char_div.querySelector('#name');
+       			if (name_span == null)
+       			{
+       				name_span = new SpanElement();
+       				name_span.attributes['id'] = 'name';
+       				name_span.attributes['class'] = 'name_span';
+       				name_span_listen(name_span);
+           			char_div.append(name_span);
+       			}
+       			else
+       			{
+       				name_span.text = '';
+       				name_span.appendHtml(character.name.padLeft(15, "&nbsp") + ' ');
+       			}
+
+       			SpanElement job_span = char_div.querySelector('#job');
+            	if (job_span == null)
+                {
+                	job_span = new SpanElement();
+                    job_span.attributes['id'] = 'job';
+                    job_span.attributes['class'] = 'job_span';
+                    char_div.append(job_span);
+                }
+                else
+                	job_span.text = character.job.data['name'] + ' ';
+
+            	SpanElement level_span = char_div.querySelector('#level');
+               	if (level_span == null)
+               	{
+               		level_span = new SpanElement();
+               		level_span.attributes['id'] = 'level';
+               		level_span.attributes['class'] = 'level_span';
+                    char_div.append(level_span);
+               	}
+               	else
+               		level_span.text = 'level: ' + character.level.toString() + ' ';
+
+//			SpanElement xp_span = char_div.querySelector('#xp');
+//			if (xp_span == null)
+//			{
+//				xp_span = new SpanElement();
+//                xp_span.attributes['id'] = 'xp';
+//                xp_span.attributes['class'] = 'xp_span';
+//                char_div.append(xp_span);
+//			}
+//			else
+//				xp_span.text = experience.toString();
+
+            	SpanElement state_span = char_div.querySelector('#state');
+            	if (state_span == null)
+            	{
+            		state_span = new SpanElement();
+                    state_span.attributes['id'] = 'state';
+                    state_span.attributes['class'] = 'state_span';
+                    char_div.append(state_span);
+            	}
+            	else
+            		state_span.text = character.state.keys.first.toString();
+            }
 		});
 	}
 
@@ -107,6 +173,7 @@ class Game
 				dropdown.attributes['class'] = 'dropdown';
 				dropdown.style.float = 'Right';
 				dropdown.appendHtml("Jobs" + '<br');
+				dropdown_listen(dropdown);
 				menu.append(dropdown);
 			}
 			else
@@ -119,6 +186,7 @@ class Game
 						droppiece = new Element.span();
 						droppiece.attributes['id'] = 'menu_' + elem.data['name'];
 						droppiece.attributes['class'] = 'droppiece';
+						droppiece_listen(droppiece);
 						dropdown.append(droppiece);
 					}
 					else
@@ -213,78 +281,97 @@ class Game
         }
     }
 
-	listen()
+	name_span_listen(Element span)
 	{
-		ElementList name_span = document.querySelectorAll('.name_span');
-   		name_span.forEach( (Element elem)
-   		{
-   			elem.onClick.listen( (event)
-   			{
-   				click_bool = 1;
-   			});
+		span.onClick.listen( (event)
+        {
+        	click_bool = 1;
+        });
 
 //   			elem.onMouseOut.listen( (event)
 //   			{
-   				window.onDoubleClick.listen( (event)
-   				{
-   					if (click_bool == 1)
-   					{
-   						click_bool = 0;
-   						menu.hidden = true;
-   					}
-   				});
+		window.onDoubleClick.listen( (event)
+		{
+			if (click_bool == 1)
+			{
+				click_bool = 0;
+				menu.hidden = true;
+			}
+		});
 //   			});
 
-   			elem.onMouseMove.listen( (event)
-   			{
-   				Iterable test = player.char_list.where( (char) => char.name == elem.text.trim() );
-				if (test.length == 1)
-				{
-					charmenu = test.first;
-					Element dropdown = menu.querySelector('#menu_dropdown');
-       				if (dropdown != null)
-      				{
-       					dropdown.text = '';
-     					dropdown.appendHtml("Jobs" + '<br');
-        			}
-					menu.hidden = false;
-				}
-   			});
+		span.onMouseMove.listen( (event)
+		{
+			Iterable test = player.char_list.where( (char) => char.name == span.text.trim() );
+			if (test.length == 1)
+			{
+				charmenu = test.first;
+				Element dropdown = menu.querySelector('#menu_dropdown');
+   				if (dropdown != null)
+  				{
+   					dropdown.text = '';
+ 					dropdown.appendHtml("Jobs" + '<br');
+ 					charmenu.updateJoblist();
+    			}
+				menu.hidden = false;
+			}
+		});
 
-   			elem.onMouseLeave.listen( (event)
-  			{
-   				if (click_bool == 0)
-   				{
-	   				menu.hidden = true;
+		span.onMouseLeave.listen( (event)
+		{
+			if (click_bool == 0)
+			{
+   				menu.hidden = true;
 //   					charlist.style.height = "100%";
-   				}
-   			});
-   		});
-
-   		ElementList droppiece_list = document.querySelectorAll('.droppiece');
-   		droppiece_list.forEach( (Element elem)
-   		{
-   			elem.onMouseDown.listen( (event)
-   			{
-   				print(charmenu.clean_job_list);
-   				Iterable new_job = charmenu.clean_job_list.where( (job) => job.data['name'] == elem.text);
-   				if (new_job.length == 1)
-   					charmenu.job = new_job.first;
-   				else
-   					print("false job selector");
-   			});
-   		});
+			}
+		});
 	}
+
+	dropdown_listen(Element dropdown)
+	{
+//		dropdown.onMouseOver.listen( (event)
+//		{
+//			dropdown.text = '';
+//            dropdown.appendHtml("Jobs" + '<br');
+//           	charmenu.updateJoblist();
+//		});
+		;
+	}
+
+	droppiece_listen(Element droppiece)
+	{
+		droppiece.onMouseDown.listen( (event)
+		{
+			Iterable new_job = charmenu.clean_job_list.where( (job) => job.data['name'] == droppiece.text);
+			if (new_job.length == 1)
+				charmenu.job = new_job.first;
+			else
+				print("false job selector");
+		});
+	}
+
+//	listen()
+//	{
+//		window.onMouseOver.listen( (event)
+//        {
+//			Element dropdown = menu.querySelector('#menu_dropdown');
+//			if (dropdown != null)
+//			{
+//				dropdown.text = '';
+//				dropdown.appendHtml("Jobs" + '<br');
+//				charmenu.updateJoblist();
+//			}
+//        });
+//	}
 
 	runGame(Timer)
 	{
 		index.remove();
-		new Future( () { listWrite(); listen(); menuWrite(); })
+		new Future( () { listWrite(); menuWrite(); })
 		..then( (event)
 		{
 			player.char_list.forEach( (elem) => elem.Increment());
 			player.char_list.forEach( (elem) => elem.updateCalendar());
-			player.char_list.forEach( (elem) => elem.updateJoblist());
 			eventVendredi();
 			eventChars();
 		});
@@ -322,6 +409,7 @@ class Game
 				..onLoad().then( (event)
 				{
 					print('Timer Begin');
+//					listen();
 					mapWrite();
 					keyEvent();
 					new Timer.periodic(new Duration(milliseconds: 80), runGame);
