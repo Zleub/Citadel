@@ -1,0 +1,37 @@
+{
+  "name": "Chief",
+  "location": "Wilderness",
+  "requirement":
+  [
+    {
+      "level": "5"
+    }
+  ],
+  "actions":
+  [
+    {
+      "name": "Manage",
+      "requirement": "none",
+      "time": 20,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    },
+    {
+      "name": "Count",
+      "requirement": "none",
+      "time": 10,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    },
+    {
+      "name": "Inspect",
+      "requirement": "none",
+      "time": 30,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    }
+  ]
+}

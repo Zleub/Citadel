@@ -1,0 +1,29 @@
+{
+  "name": "Hunter",
+  "location": "Hill",
+  "requirement":
+  [
+    {
+      "level": "5"
+    }
+  ],
+  "actions":
+  [
+    {
+      "name": "Hunting Down",
+      "requirement": "none",
+      "time": 120,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    },
+    {
+      "name": "Cleaning",
+      "requirement": "none",
+      "time": 30,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    }
+  ]
+}

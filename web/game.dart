@@ -142,7 +142,7 @@ class Game
                     char_div.append(state_span);
             	}
             	else
-            		state_span.text = character.state.keys.first.toString();
+            		state_span.text = character.state['name'];
             }
 		});
 	}
@@ -487,7 +487,10 @@ class Game
 		{
 			Iterable new_job = charmenu.clean_job_list.where( (job) => job.data['name'] == droppiece.text);
 			if (new_job.length == 1)
+			{
 				charmenu.job = new_job.first;
+				charmenu.calendar.Update(charmenu.job, charmenu.rand);
+			}
 			else
 				print("false job selector");
 		});

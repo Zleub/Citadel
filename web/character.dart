@@ -64,12 +64,12 @@ class Character
 
 	updateCalendar()
 	{
-		if (time == state.values.first)
+		if (time == state['time'])
 		{
-			int index = calendar.datalist.indexOf(state) + 1;
-			if (index > calendar.datalist.length - 1)
+			int index = calendar.calendar.indexOf(state) + 1;
+			if (index > calendar.calendar.length - 1)
 				index = 0;
-			state = calendar.datalist.elementAt(index);
+			state = calendar.calendar.elementAt(index);
 			time = 0;
 		}
 	}
@@ -103,7 +103,7 @@ class Character
 
 	Increment()
 	{
-		if (ticks % 100 == 0 && state.keys.first == 'spare')
+		if (ticks % 100 == 0 && state['name'] == 'spare')
 		{
 			int		tmp1 = getRand(8);
 			int		tmp2 = getRand(2);
@@ -169,10 +169,10 @@ class Character
        	.onLoad().then( (Calendar calendar)
         {
         	this.calendar = calendar;
-        	this.state = this.calendar.datalist.first;
-        	print(calendar.datalist[0]);
+        	this.state = this.calendar.calendar.first;
+
         });
-		List<String> job_slist = ['rover', 'farmer', 'miner'];
+		List<String> job_slist = ['rover', 'farmer', 'miner', 'hunter', 'priest', 'chief'];
 		List<Future> job_flist = new List();
 		job_list = new List();
 		clean_job_list = new List();
@@ -188,6 +188,7 @@ class Character
 			.then( (elem)
 			{
 				job = job_list.first;
+				calendar.Update(job, rand);
 			});
 		});
 

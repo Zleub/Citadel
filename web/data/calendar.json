@@ -2,7 +2,7 @@
 	"calendar":
 	[
 		{
-			"name": "eat",
+			"name": "Eat",
 			"time": 20,
 			"requirement": "none",
 			"skill_shape": "none",
@@ -10,7 +10,7 @@
 			"skill_rand": "none"
 		},
 		{
-      "name": "spare",
+      "name": "Spare",
       "time": 150,
       "requirement": "none",
       "skill_shape": "none",
@@ -18,7 +18,7 @@
       "skill_rand": "none"
     },
     {
-      "name": "eat",
+      "name": "Eat",
       "time": 20,
       "requirement": "none",
       "skill_shape": "none",
@@ -26,7 +26,7 @@
       "skill_rand": "none"
     },
     {
-      "name": "spare",
+      "name": "Spare",
       "time": 150,
       "requirement": "none",
       "skill_shape": "none",
@@ -34,7 +34,7 @@
       "skill_rand": "none"
     },
     {
-      "name": "eat",
+      "name": "Eat",
       "time": 20,
       "requirement": "none",
       "skill_shape": "none",
@@ -42,7 +42,7 @@
       "skill_rand": "none"
     },
     {
-      "name": "sleep",
+      "name": "Sleep",
       "time": 240,
       "requirement": "none",
       "skill_shape": "none",

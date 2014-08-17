@@ -1,0 +1,29 @@
+{
+  "name": "Priest",
+  "location": "Wilderness",
+  "requirement":
+  [
+    {
+      "level": "5"
+    }
+  ],
+  "actions":
+  [
+    {
+      "name": "Pray",
+      "requirement": "none",
+      "time": 50,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    },
+    {
+      "name": "Proselytize",
+      "requirement": "none",
+      "time": 50,
+      "skill_shape": "stamina strenght dexterity",
+      "skill_loot": "random",
+      "skill_rand": 3
+    }
+  ]
+}

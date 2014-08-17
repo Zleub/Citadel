@@ -137,7 +137,6 @@ class World
            	drawMCircle(tmp, x, y, 7, i);
            	biomeNbr -= 1;
    		}
-   		print(tmp);
    		while(i < sizeWorld * sizeWorld)
         {
    			if ((i + 1 < sizeWorld * sizeWorld && tmp[i] != tmp[i + 1]
