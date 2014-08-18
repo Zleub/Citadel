@@ -151,20 +151,6 @@ class Game
 	{
 		if (charmenu != null)
 		{
-			SpanElement name_span = menu.querySelector('#menu_name');
-			if (name_span == null)
-			{
-				name_span = new SpanElement();
-                name_span.attributes['id'] = 'menu_name';
-                name_span.attributes['class'] = 'menu_name_span';
-                menu.append(name_span);
-			}
-			else
-			{
-				name_span.text = '';
-                name_span.appendHtml(charmenu.name);
-			}
-
 			Element dropdown = menu.querySelector('#menu_dropdown');
 			if (dropdown == null)
 			{
@@ -194,6 +180,20 @@ class Game
 						droppiece.text = elem.data['name'];
 					}
 				});
+			}
+
+			SpanElement name_span = menu.querySelector('#menu_name');
+			if (name_span == null)
+			{
+				name_span = new SpanElement();
+                name_span.attributes['id'] = 'menu_name';
+                name_span.attributes['class'] = 'menu_name_span';
+                menu.append(name_span);
+			}
+			else
+			{
+				name_span.text = '';
+                name_span.appendHtml(charmenu.name);
 			}
 
 			Element strength_span = menu.querySelector('#menu_strength');
@@ -449,13 +449,13 @@ class Game
 			if (test.length == 1)
 			{
 				charmenu = test.first;
-				Element dropdown = menu.querySelector('#menu_dropdown');
-   				if (dropdown != null)
-  				{
-   					dropdown.text = '';
- 					dropdown.appendHtml("Jobs" + '<br');
- 					charmenu.updateJoblist();
-    			}
+//				Element dropdown = menu.querySelector('#menu_dropdown');
+//   				if (dropdown != null)
+//  				{
+//   					dropdown.text = '';
+// 					dropdown.appendHtml("Jobs" + '<br');
+// 					charmenu.updateJoblist();
+//    			}
 				menu.hidden = false;
 			}
 		});
@@ -472,13 +472,10 @@ class Game
 
 	dropdown_listen(Element dropdown)
 	{
-//		dropdown.onMouseOver.listen( (event)
-//		{
-//			dropdown.text = '';
-//            dropdown.appendHtml("Jobs" + '<br');
-//           	charmenu.updateJoblist();
-//		});
-		;
+		dropdown.onMouseEnter.listen( (event)
+		{
+			updateJobMenu();
+		});
 	}
 
 	droppiece_listen(Element droppiece)
@@ -496,19 +493,16 @@ class Game
 		});
 	}
 
-//	listen()
-//	{
-//		window.onMouseOver.listen( (event)
-//        {
-//			Element dropdown = menu.querySelector('#menu_dropdown');
-//			if (dropdown != null)
-//			{
-//				dropdown.text = '';
-//				dropdown.appendHtml("Jobs" + '<br');
-//				charmenu.updateJoblist();
-//			}
-//        });
-//	}
+	updateJobMenu()
+	{
+		Element dropdown = menu.querySelector('#menu_dropdown');
+		if (dropdown != null)
+		{
+			dropdown.text = '';
+			dropdown.appendHtml("Jobs" + '<br');
+			charmenu.updateJoblist();
+		}
+	}
 
 	runGame(Timer)
 	{

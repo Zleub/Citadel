@@ -14,24 +14,24 @@
       "requirement": "none",
       "time": 20,
       "skill_shape": "stamina",
-      "skill_loot": "unique",
-      "skill_rand": 1
+      "skill_loot": "all",
+      "skill_rand": 2
     },
     {
       "name": "Growing",
       "requirement": "Planting",
       "time": 80,
       "skill_shape": "wisdom",
-      "skill_loot": "unique",
-      "skill_rand": 1
+      "skill_loot": "all",
+      "skill_rand": 2
     },
     {
       "name": "Harvesting",
       "requirement": "Growing",
       "time": 50,
       "skill_shape": "dexterity",
-      "skill_loot": "unique",
-      "skill_rand": 1
+      "skill_loot": "all",
+      "skill_rand": 2
     }
   ]
 }

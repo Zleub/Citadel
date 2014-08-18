@@ -2,7 +2,7 @@ part of citadel;
 
 class World
 {
-	int				sizeWorld = 15;
+	int				sizeWorld = 20;
 	Player			player;
 	List<Biome>		mapWorld;
 	Completer		_completer;
@@ -159,7 +159,7 @@ class World
 		List<Map>	citadel = data['citadel'];
 
 		Biome	wilderness = getWilderness(citadel);
-		mapWorld[(sizeWorld * sizeWorld) ~/ 2] = wilderness;
+		mapWorld[(sizeWorld ~/ 2) + (sizeWorld ~/ 2) * sizeWorld] = wilderness;
 	}
 
 	drawWater()

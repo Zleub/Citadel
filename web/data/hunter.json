@@ -13,17 +13,17 @@
       "name": "Hunting Down",
       "requirement": "none",
       "time": 120,
-      "skill_shape": "stamina strenght dexterity",
+      "skill_shape": "agility dexterity",
       "skill_loot": "random",
-      "skill_rand": 3
+      "skill_rand": 2
     },
     {
       "name": "Cleaning",
       "requirement": "none",
       "time": 30,
-      "skill_shape": "stamina strenght dexterity",
-      "skill_loot": "random",
-      "skill_rand": 3
+      "skill_shape": "intelligence",
+      "skill_loot": "all",
+      "skill_rand": 2
     }
   ]
 }

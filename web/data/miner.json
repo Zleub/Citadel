@@ -13,9 +13,9 @@
       "name": "Mining",
       "requirement": "none",
       "time": 100,
-      "skill_shape": "stamina strenght dexterity",
-      "skill_loot": "random",
-      "skill_rand": 3
+      "skill_shape": "stamina strength will",
+      "skill_loot": "all",
+      "skill_rand": 2
     }
   ]
 }

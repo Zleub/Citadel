@@ -50,11 +50,10 @@ class Character
 
 	Check()
 	{
-		if (experience >= level * 10)
-		{
-			experience = 0;
-			level += 1;
-		}
+		if (level != strength + stamina + agility + dexterity
+				+ intelligence + charisma + wisdom + will)
+			level = strength + stamina + agility + dexterity
+					+ intelligence + charisma + wisdom + will;
 		if (ticks == 365 * 60)
 		{
 			age += 1;
@@ -64,8 +63,110 @@ class Character
 
 	updateCalendar()
 	{
+		time += 1;
 		if (time == state['time'])
 		{
+			String skill_shape = state['skill_shape'];
+
+			if (state['skill_rand'] == 'none')
+				;
+			else
+			{
+				int rand_loot = getRand(state['skill_rand']);
+
+				print(name + ': ' + rand_loot.toString());
+
+				if (skill_shape.contains(' ', 0))
+				{
+					List<String> skill_list = skill_shape.split(' ');
+					if (state['skill_loot'] == 'random')
+					{
+						int stat_nbr = getRand(8);
+
+						if (stat_nbr == 0)
+							strength += rand_loot;
+						else if (stat_nbr == 1)
+							stamina += rand_loot;
+						else if (stat_nbr == 2)
+	   						agility += rand_loot;
+						else if (stat_nbr == 3)
+							dexterity += rand_loot;
+						else if (stat_nbr == 4)
+							intelligence += rand_loot;
+						else if (stat_nbr == 5)
+							charisma += rand_loot;
+						else if (stat_nbr == 6)
+							wisdom += rand_loot;
+						else if (stat_nbr == 7)
+							will += rand_loot;
+					}
+					else if (state['skill_loot'] == 'all')
+					{
+						skill_list.forEach( (elem)
+						{
+							if (elem == 'strength')
+								strength += rand_loot;
+							else if (elem == 'stamina')
+								stamina += rand_loot;
+							else if (elem == 'agility')
+		   						agility += rand_loot;
+							else if (elem == 'dexterity')
+								dexterity += rand_loot;
+							else if (elem == 'intelligence')
+								intelligence += rand_loot;
+							else if (elem == 'charisma')
+								charisma += rand_loot;
+							else if (elem == 'wisdom')
+								wisdom += rand_loot;
+							else if (elem == 'will')
+								will += rand_loot;
+						});
+					}
+				}
+				else if (skill_shape == 'all')
+				{
+					if (state['skill_loot'] == 'random')
+					{
+						int stat_nbr = getRand(8);
+
+						if (stat_nbr == 0)
+							strength += rand_loot;
+						else if (stat_nbr == 1)
+							stamina += rand_loot;
+						else if (stat_nbr == 2)
+	   						agility += rand_loot;
+						else if (stat_nbr == 3)
+							dexterity += rand_loot;
+						else if (stat_nbr == 4)
+							intelligence += rand_loot;
+						else if (stat_nbr == 5)
+							charisma += rand_loot;
+						else if (stat_nbr == 6)
+							wisdom += rand_loot;
+						else if (stat_nbr == 7)
+							will += rand_loot;
+					}
+				}
+				else
+				{
+					if (skill_shape == 'strength')
+						strength += rand_loot;
+					else if (skill_shape == 'stamina')
+						stamina += rand_loot;
+					else if (skill_shape == 'agility')
+							agility += rand_loot;
+					else if (skill_shape == 'dexterity')
+						dexterity += rand_loot;
+					else if (skill_shape == 'intelligence')
+						intelligence += rand_loot;
+					else if (skill_shape == 'charisma')
+						charisma += rand_loot;
+					else if (skill_shape == 'wisdom')
+						wisdom += rand_loot;
+					else if (skill_shape == 'will')
+						will += rand_loot;
+				}
+			}
 			int index = calendar.calendar.indexOf(state) + 1;
 			if (index > calendar.calendar.length - 1)
 				index = 0;
@@ -103,31 +204,6 @@ class Character
 
 	Increment()
 	{
-		if (ticks % 100 == 0 && state['name'] == 'spare')
-		{
-			int		tmp1 = getRand(8);
-			int		tmp2 = getRand(2);
-
-			if (tmp1 == 0)
-				strength += tmp2;
-			if (tmp1 == 1)
-   				stamina += tmp2;
-			if (tmp1 == 2)
-            	agility += tmp2;
-			if (tmp1 == 3)
-   				dexterity += tmp2;
-			if (tmp1 == 4)
-				intelligence += tmp2;
-			if (tmp1 == 5)
-   				charisma += tmp2;
-			if (tmp1 == 6)
-            	wisdom += tmp2;
-			if (tmp1 == 7)
-   				will += tmp2;
-		}
-		if (ticks % 10 == 0)
-			experience += 1;
-		time += 1;
 		ticks += 1;
 		Check();
 	}
@@ -165,13 +241,13 @@ class Character
 
 	Character(String this.name)
 	{
-		new Calendar()
-       	.onLoad().then( (Calendar calendar)
-        {
-        	this.calendar = calendar;
-        	this.state = this.calendar.calendar.first;
-
-        });
+//		new Calendar()
+//       	.onLoad().then( (Calendar calendar)
+//        {
+//        	this.calendar = calendar;
+////        	this.state = this.calendar.calendar.first;
+//
+//        });
 		List<String> job_slist = ['rover', 'farmer', 'miner', 'hunter', 'priest', 'chief'];
 		List<Future> job_flist = new List();
 		job_list = new List();
@@ -188,7 +264,14 @@ class Character
 			.then( (elem)
 			{
 				job = job_list.first;
-				calendar.Update(job, rand);
+				calendar = new Calendar()
+				..onLoad().then( (event)
+				{
+					calendar.Update(job, rand).then ( (event)
+					{
+						state = calendar.calendar.first;
+					});
+				});
 			});
 		});
 

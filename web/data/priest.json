@@ -13,17 +13,17 @@
       "name": "Pray",
       "requirement": "none",
       "time": 50,
-      "skill_shape": "stamina strenght dexterity",
-      "skill_loot": "random",
-      "skill_rand": 3
+      "skill_shape": "wisdom will",
+      "skill_loot": "all",
+      "skill_rand": 2
     },
     {
       "name": "Proselytize",
       "requirement": "none",
       "time": 50,
-      "skill_shape": "stamina strenght dexterity",
-      "skill_loot": "random",
-      "skill_rand": 3
+      "skill_shape": "dexterity",
+      "skill_loot": "all",
+      "skill_rand": 2
     }
   ]
 }

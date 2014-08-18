@@ -6,13 +6,13 @@ class Calendar
 	List<Map>	calendar;
 	Completer	_completer;
 
-	Update(Job job, Random rand)
+	Future Update(Job job, Random rand)
 	{
 		List<Map> spare_case = new List();
 		List<Map> job_case;
 		int			job_sum;
 
-		this.onLoad().then( (event)
+		return this.onLoad().then( (event)
 		{
 			job_sum = 0;
 			job_case = job.data['actions'];
@@ -33,9 +33,9 @@ class Calendar
 					{
 						job_case.forEach( (Map elem)
 						{
-							spare_case.add(elem);
+							spare_case.add(new Map.from(elem));
 						});
-//						job_case.shuffle(rand);
+						job_case.shuffle(rand);
 						times -= 1;
 					}
 				}
