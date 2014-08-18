@@ -18,7 +18,7 @@
       "skill_rand": 2
     },
     {
-      "name": "Cleaning",
+      "name": "Eviscerate",
       "requirement": "none",
       "time": 30,
       "skill_shape": "intelligence",

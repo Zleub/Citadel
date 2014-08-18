@@ -67,21 +67,19 @@ class Character
 		if (time == state['time'])
 		{
 			String skill_shape = state['skill_shape'];
+			int skill_chance = getRand(2);
 
 			if (state['skill_rand'] == 'none')
 				;
 			else
 			{
-				int rand_loot = getRand(state['skill_rand']);
-
-				print(name + ': ' + rand_loot.toString());
-
 				if (skill_shape.contains(' ', 0))
 				{
 					List<String> skill_list = skill_shape.split(' ');
 					if (state['skill_loot'] == 'random')
 					{
 						int stat_nbr = getRand(8);
+						int rand_loot = getRand(state['skill_rand']);
 
 						if (stat_nbr == 0)
 							strength += rand_loot;
@@ -104,6 +102,8 @@ class Character
 					{
 						skill_list.forEach( (elem)
 						{
+							int rand_loot = getRand(state['skill_rand']);
+
 							if (elem == 'strength')
 								strength += rand_loot;
 							else if (elem == 'stamina')
@@ -128,6 +128,7 @@ class Character
 					if (state['skill_loot'] == 'random')
 					{
 						int stat_nbr = getRand(8);
+						int rand_loot = getRand(state['skill_rand']);
 
 						if (stat_nbr == 0)
 							strength += rand_loot;
@@ -149,6 +150,8 @@ class Character
 				}
 				else
 				{
+					int rand_loot = getRand(state['skill_rand']);
+
 					if (skill_shape == 'strength')
 						strength += rand_loot;
 					else if (skill_shape == 'stamina')

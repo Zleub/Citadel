@@ -41,10 +41,10 @@ class Calendar
 				}
 			});
 			calendar = spare_case;
-			calendar.forEach( (elem)
-			{
-				print(elem);
-			});
+//			calendar.forEach( (elem)
+//			{
+//				print(elem);
+//			});
 		});
 	}
 
