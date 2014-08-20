@@ -69,7 +69,7 @@ class Character
 			String skill_shape = state['skill_shape'];
 			int skill_chance = getRand(2);
 
-			if (state['skill_rand'] == 'none')
+			if (skill_chance == 0 || state['skill_rand'] == 'none')
 				;
 			else
 			{

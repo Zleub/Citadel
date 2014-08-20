@@ -1,8 +1,13 @@
-*:not(input)
-{
+* {
 	color: white;
 	background-color: black;
 	font-family: "Courier New";
+}
+
+input
+{
+	color: black;
+	background-color: white;
 }
 
 .charlist, .map
@@ -73,4 +78,9 @@
 .Desert
 {
 	color: yellow;
+}
+
+div
+{
+	border: 1px red solid
 }

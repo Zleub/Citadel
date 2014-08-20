@@ -8,7 +8,7 @@ class Game
 
 	Character			charmenu;
 
-	BodyElement			body;
+	DivElement			body;
 	DivElement			index;
 	DivElement			charlist;
 	DivElement			map;
@@ -379,9 +379,9 @@ class Game
 		world.mapWorld.forEach( (elem)
 		{
 			if (elem == null)
-				map.appendHtml("&nbsp;&nbsp;");
+				map.appendHtml("&nbsp;&nbsp;&nbsp;");
 			else
-				map.appendHtml("&nbsp;" + elem.toString());
+				map.appendHtml("&nbsp;" + elem.toString() + '&nbsp;');
 			i += 1;
 			if (i % world.sizeWorld == 0)
 				map.appendHtml("<br>");
@@ -519,24 +519,29 @@ class Game
 
 	Future GameInit()
 	{
+		DivElement test;
+
 		return new Future ( ()
 			{
 				index = new DivElement();
 				charlist = new DivElement();
 				map = new DivElement();
 				menu = new DivElement();
+				test = new DivElement();
 			}).then( (event)
 			{
 				indexInit();
                 listInit();
                 mapInit();
                 menuInit();
+                test.text = "dela merde";
+                body.append(test);
 			});
 	}
 
 	Game()
 	{
-		body = document.querySelector('body');
+		body = document.querySelector('#main_row');
 
 		GameInit().then( (event)
 		{

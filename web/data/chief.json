@@ -12,7 +12,7 @@
     {
       "name": "Manage",
       "requirement": "none",
-      "time": 20,
+      "time": 50,
       "skill_shape": "charisma will",
       "skill_loot": "random",
       "skill_rand": 2
@@ -20,7 +20,7 @@
     {
       "name": "Count",
       "requirement": "none",
-      "time": 10,
+      "time": 50,
       "skill_shape": "stamina",
       "skill_loot": "all",
       "skill_rand": 2
@@ -28,7 +28,7 @@
     {
       "name": "Inspect",
       "requirement": "none",
-      "time": 30,
+      "time": 50,
       "skill_shape": "charisma will",
       "skill_loot": "random",
       "skill_rand": 2

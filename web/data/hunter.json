@@ -14,7 +14,7 @@
       "requirement": "none",
       "time": 120,
       "skill_shape": "agility dexterity",
-      "skill_loot": "random",
+      "skill_loot": "all",
       "skill_rand": 2
     },
     {
