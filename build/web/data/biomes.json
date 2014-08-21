@@ -45,6 +45,12 @@
       "requirement": "none",
       "shape": "circle",
       "graphic": "^"
+    },
+    {
+      "name": "Desert",
+      "requirement": "none",
+      "shape": "circle",
+      "graphic": "_"
     }
   ]
 }

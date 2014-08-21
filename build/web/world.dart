@@ -2,7 +2,7 @@ part of citadel;
 
 class World
 {
-	int				sizeWorld = 15;
+	int				sizeWorld = 20;
 	Player			player;
 	List<Biome>		mapWorld;
 	Completer		_completer;
@@ -137,7 +137,6 @@ class World
            	drawMCircle(tmp, x, y, 7, i);
            	biomeNbr -= 1;
    		}
-   		print(tmp);
    		while(i < sizeWorld * sizeWorld)
         {
    			if ((i + 1 < sizeWorld * sizeWorld && tmp[i] != tmp[i + 1]
@@ -160,7 +159,7 @@ class World
 		List<Map>	citadel = data['citadel'];
 
 		Biome	wilderness = getWilderness(citadel);
-		mapWorld[(sizeWorld * sizeWorld) ~/ 2] = wilderness;
+		mapWorld[(sizeWorld ~/ 2) + (sizeWorld ~/ 2) * sizeWorld] = wilderness;
 	}
 
 	drawWater()

@@ -8,14 +8,14 @@
 			"time": 20,
 			"skill_shape": "all",
 			"skill_loot": "random",
-			"skill_rand": 1
+			"skill_rand": 2
 		},
 		{
 			"name": "Gathering thing around",
 			"time": 50,
 			"skill_shape": "all",
 			"skill_loot": "random",
-			"skill_rand": 1
+			"skill_rand": 2
 		}
 	]
 }

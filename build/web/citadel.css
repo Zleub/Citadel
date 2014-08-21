@@ -1,8 +1,32 @@
-*:not(input)
+*
 {
+	margin: 0;
 	color: white;
 	background-color: black;
 	font-family: "Courier New";
+}
+
+html, body
+{
+	height: 100%;
+}
+
+.wrapper
+{
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+}
+.footer, .push
+{
+	height: 4em;
+}
+
+input
+{
+	color: black;
+	background-color: white;
 }
 
 .charlist, .map
@@ -68,4 +92,9 @@
 .Plain
 {
 	color: lightgreen;
+}
+
+.Desert
+{
+	color: yellow;
 }

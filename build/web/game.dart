@@ -8,7 +8,7 @@ class Game
 
 	Character			charmenu;
 
-	BodyElement			body;
+	DivElement			body;
 	DivElement			index;
 	DivElement			charlist;
 	DivElement			map;
@@ -142,7 +142,7 @@ class Game
                     char_div.append(state_span);
             	}
             	else
-            		state_span.text = character.state.keys.first.toString();
+            		state_span.text = character.state['name'];
             }
 		});
 	}
@@ -151,20 +151,6 @@ class Game
 	{
 		if (charmenu != null)
 		{
-			SpanElement name_span = menu.querySelector('#menu_name');
-			if (name_span == null)
-			{
-				name_span = new SpanElement();
-                name_span.attributes['id'] = 'menu_name';
-                name_span.attributes['class'] = 'menu_name_span';
-                menu.append(name_span);
-			}
-			else
-			{
-				name_span.text = '';
-                name_span.appendHtml(charmenu.name);
-			}
-
 			Element dropdown = menu.querySelector('#menu_dropdown');
 			if (dropdown == null)
 			{
@@ -194,6 +180,20 @@ class Game
 						droppiece.text = elem.data['name'];
 					}
 				});
+			}
+
+			SpanElement name_span = menu.querySelector('#menu_name');
+			if (name_span == null)
+			{
+				name_span = new SpanElement();
+                name_span.attributes['id'] = 'menu_name';
+                name_span.attributes['class'] = 'menu_name_span';
+                menu.append(name_span);
+			}
+			else
+			{
+				name_span.text = '';
+                name_span.appendHtml(charmenu.name);
 			}
 
 			Element strength_span = menu.querySelector('#menu_strength');
@@ -379,9 +379,9 @@ class Game
 		world.mapWorld.forEach( (elem)
 		{
 			if (elem == null)
-				map.appendHtml("&nbsp;&nbsp;");
+				map.appendHtml("&nbsp;&nbsp;&nbsp;");
 			else
-				map.appendHtml("&nbsp;" + elem.toString());
+				map.appendHtml("&nbsp;" + elem.toString() + '&nbsp;');
 			i += 1;
 			if (i % world.sizeWorld == 0)
 				map.appendHtml("<br>");
@@ -449,13 +449,13 @@ class Game
 			if (test.length == 1)
 			{
 				charmenu = test.first;
-				Element dropdown = menu.querySelector('#menu_dropdown');
-   				if (dropdown != null)
-  				{
-   					dropdown.text = '';
- 					dropdown.appendHtml("Jobs" + '<br');
- 					charmenu.updateJoblist();
-    			}
+//				Element dropdown = menu.querySelector('#menu_dropdown');
+//   				if (dropdown != null)
+//  				{
+//   					dropdown.text = '';
+// 					dropdown.appendHtml("Jobs" + '<br');
+// 					charmenu.updateJoblist();
+//    			}
 				menu.hidden = false;
 			}
 		});
@@ -472,13 +472,10 @@ class Game
 
 	dropdown_listen(Element dropdown)
 	{
-//		dropdown.onMouseOver.listen( (event)
-//		{
-//			dropdown.text = '';
-//            dropdown.appendHtml("Jobs" + '<br');
-//           	charmenu.updateJoblist();
-//		});
-		;
+		dropdown.onMouseEnter.listen( (event)
+		{
+			updateJobMenu();
+		});
 	}
 
 	droppiece_listen(Element droppiece)
@@ -487,25 +484,25 @@ class Game
 		{
 			Iterable new_job = charmenu.clean_job_list.where( (job) => job.data['name'] == droppiece.text);
 			if (new_job.length == 1)
+			{
 				charmenu.job = new_job.first;
+				charmenu.calendar.Update(charmenu.job, charmenu.rand);
+			}
 			else
 				print("false job selector");
 		});
 	}
 
-//	listen()
-//	{
-//		window.onMouseOver.listen( (event)
-//        {
-//			Element dropdown = menu.querySelector('#menu_dropdown');
-//			if (dropdown != null)
-//			{
-//				dropdown.text = '';
-//				dropdown.appendHtml("Jobs" + '<br');
-//				charmenu.updateJoblist();
-//			}
-//        });
-//	}
+	updateJobMenu()
+	{
+		Element dropdown = menu.querySelector('#menu_dropdown');
+		if (dropdown != null)
+		{
+			dropdown.text = '';
+			dropdown.appendHtml("Jobs" + '<br');
+			charmenu.updateJoblist();
+		}
+	}
 
 	runGame(Timer)
 	{
@@ -522,24 +519,29 @@ class Game
 
 	Future GameInit()
 	{
+		DivElement test;
+
 		return new Future ( ()
 			{
 				index = new DivElement();
 				charlist = new DivElement();
 				map = new DivElement();
 				menu = new DivElement();
+				test = new DivElement();
 			}).then( (event)
 			{
 				indexInit();
                 listInit();
                 mapInit();
                 menuInit();
+                test.text = "dela merde";
+                body.append(test);
 			});
 	}
 
 	Game()
 	{
-		body = document.querySelector('body');
+		body = document.querySelector('#main_row');
 
 		GameInit().then( (event)
 		{
