@@ -4010,7 +4010,9 @@ var $$ = {};
       t2 = t1.menu;
       t2.hidden;
       t1.body.appendChild(t2);
-      t2 = this.box_0.push_0;
+      t2 = this.box_0;
+      t2.push_0.setAttribute("class", "push");
+      t2 = t2.push_0;
       t2.textContent = "dela merde";
       t1.body.appendChild(t2);
     }

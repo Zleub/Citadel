@@ -534,6 +534,7 @@ class Game
                 listInit();
                 mapInit();
                 menuInit();
+                push.attributes['class'] = "push";
                 push.text = "dela merde";
                 body.append(push);
 			});
