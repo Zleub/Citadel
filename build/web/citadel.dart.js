@@ -3742,8 +3742,8 @@ var $$ = {};
     }, "call$1", "get$runGame", 2, 0, 12],
     GameInit$0: function() {
       var t1 = {};
-      t1.test_0 = null;
-      return P.Future_Future(new X.Game_GameInit_closure(t1, this), null).then$1(new X.Game_GameInit_closure0(this));
+      t1.push_0 = null;
+      return P.Future_Future(new X.Game_GameInit_closure(t1, this), null).then$1(new X.Game_GameInit_closure0(t1, this));
     },
     Game$0: function() {
       this.body = document.querySelector("#main_row");
@@ -3985,11 +3985,11 @@ var $$ = {};
       t1.charlist = document.createElement("div", null);
       t1.map = document.createElement("div", null);
       t1.menu = document.createElement("div", null);
-      this.box_0.test_0 = document.createElement("div", null);
+      this.box_0.push_0 = document.createElement("div", null);
     }
   },
   Game_GameInit_closure0: {
-    "^": "Closure:12;this_2",
+    "^": "Closure:12;box_0,this_2",
     call$1: function($event) {
       var t1, t2;
       t1 = this.this_2;
@@ -4009,6 +4009,9 @@ var $$ = {};
       t1.menu.setAttribute("class", "menu");
       t2 = t1.menu;
       t2.hidden;
+      t1.body.appendChild(t2);
+      t2 = this.box_0.push_0;
+      t2.textContent = "dela merde";
       t1.body.appendChild(t2);
     }
   },

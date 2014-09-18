@@ -519,7 +519,7 @@ class Game
 
 	Future GameInit()
 	{
-		DivElement test;
+		DivElement push;
 
 		return new Future ( ()
 			{
@@ -527,15 +527,15 @@ class Game
 				charlist = new DivElement();
 				map = new DivElement();
 				menu = new DivElement();
-				test = new DivElement();
+				push = new DivElement();
 			}).then( (event)
 			{
 				indexInit();
                 listInit();
                 mapInit();
                 menuInit();
-               // test.text = "dela merde";
-               // body.append(test);
+                push.text = "dela merde";
+                body.append(push);
 			});
 	}
 
