@@ -534,8 +534,8 @@ class Game
                 listInit();
                 mapInit();
                 menuInit();
-                test.text = "dela merde";
-                body.append(test);
+               // test.text = "dela merde";
+               // body.append(test);
 			});
 	}
 

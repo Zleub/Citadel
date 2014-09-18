@@ -64,6 +64,7 @@ class Character
 	updateCalendar()
 	{
 		time += 1;
+//		print(state);
 		if (time == state['time'])
 		{
 			String skill_shape = state['skill_shape'];
