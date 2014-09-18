@@ -4012,9 +4012,7 @@ var $$ = {};
       t1.body.appendChild(t2);
       t2 = this.box_0;
       t2.push_0.setAttribute("class", "push");
-      t2 = t2.push_0;
-      t2.textContent = "dela merde";
-      t1.body.appendChild(t2);
+      t1.body.appendChild(t2.push_0);
     }
   },
   Game_closure: {
