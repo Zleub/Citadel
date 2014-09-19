@@ -504,25 +504,13 @@ class Game
 		}
 	}
 
-	runGame(Timer)
-	{
-		index.remove();
-		new Future( () { listWrite(); menuWrite(); })
-		..then( (event)
-		{
-			player.char_list.forEach( (elem) => elem.Increment());
-			player.char_list.forEach( (elem) => elem.updateCalendar());
-			eventVendredi();
-			eventChars();
-		});
-	}
-
 	Future GameInit()
 	{
 		DivElement push;
 
 		return new Future ( ()
 			{
+				body = document.querySelector('#main_row');
 				index = new DivElement();
 				charlist = new DivElement();
 				map = new DivElement();
@@ -539,10 +527,21 @@ class Game
 			});
 	}
 
+	runGame(Timer)
+   	{
+   		index.remove();
+   		new Future( () { listWrite(); menuWrite(); })
+   		..then( (event)
+   		{
+   			player.char_list.forEach( (elem) => elem.Increment());
+   			player.char_list.forEach( (elem) => elem.updateCalendar());
+   			eventVendredi();
+   			eventChars();
+   		});
+   	}
+
 	Game()
 	{
-		body = document.querySelector('#main_row');
-
 		GameInit().then( (event)
 		{
 			InputElement input = document.querySelector('#index');
