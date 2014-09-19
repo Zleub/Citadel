@@ -29,6 +29,11 @@ input
 	background-color: white;
 }
 
+.charlist, .map
+{
+	float: left;
+}
+
 .menu
 {
 	width: 30%;
