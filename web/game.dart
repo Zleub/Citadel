@@ -15,6 +15,7 @@ class Game
 	DivElement			menu;
 
 	int					click_bool = 0;
+	int					panel_show = 0;
 
 	keyEvent()
 	{
@@ -23,16 +24,17 @@ class Game
 //			print(event.keyCode);
 			if (event.keyCode == 77)
 			{
-				if (map.hidden == true)
+				if (panel_show == 0)
 				{
-
-					charlist.hidden = true;
-					map.hidden = false;
+					map.setAttribute("style", "display: inline-block;");
+                    charlist.setAttribute("style", "display: none;");
+					panel_show = 1;
 				}
-				else
+				else if (panel_show == 1)
 				{
-					map.hidden = true;
-					charlist.hidden = false;
+					charlist.setAttribute("style", "display: inline-block;");
+					map.setAttribute("style", "display: none;");
+					panel_show = 0;
 				}
 
 			}

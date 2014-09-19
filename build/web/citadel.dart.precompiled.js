@@ -3612,16 +3612,29 @@ var $$ = {};
   Game_keyEvent_closure: {
     "^": "Closure:13;this_0",
     call$1: function($event) {
-      var t1, t2;
+      var t1, t2, t3;
       if (J.get$keyCode$x($event) === 77) {
         t1 = this.this_0;
         t2 = t1.map;
         if (t2.hidden === true) {
-          t1.charlist.hidden = true;
           t2.hidden = false;
+          t3 = t2.getAttribute("style");
+          if (typeof t3 !== "string")
+            return t3.$add();
+          t2.setAttribute("style", t3 + "float: left;");
+          t1 = t1.charlist;
+          t1.hidden = true;
+          t1.setAttribute("style", "width: 70%; heigth: 100%;");
         } else {
-          t2.hidden = true;
-          t1.charlist.hidden = false;
+          t3 = t1.charlist;
+          t3.hidden = false;
+          t2 = t2.getAttribute("style");
+          if (typeof t2 !== "string")
+            return t2.$add();
+          t3.setAttribute("style", t2 + "float: left;");
+          t1 = t1.map;
+          t1.hidden = true;
+          t1.setAttribute("style", "width: 70%; heigth: 100%;");
         }
       }
     }

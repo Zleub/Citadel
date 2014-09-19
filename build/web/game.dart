@@ -25,14 +25,17 @@ class Game
 			{
 				if (map.hidden == true)
 				{
-
-					charlist.hidden = true;
 					map.hidden = false;
+					map.setAttribute("style", map.getAttribute("style") + "float: left;");
+					charlist.hidden = true;
+					charlist.setAttribute("style", "width: 70%; heigth: 100%;");
 				}
 				else
 				{
-					map.hidden = true;
 					charlist.hidden = false;
+					charlist.setAttribute("style", map.getAttribute("style") + "float: left;");
+					map.hidden = true;
+					map.setAttribute("style", "width: 70%; heigth: 100%;");
 				}
 
 			}
