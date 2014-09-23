@@ -29,9 +29,23 @@ input
 	background-color: white;
 }
 
+.map
+{
+	width: 70%;
+	height: 100%;
+}
+
+.charlist
+{
+	width: 70%;
+	height: 100%;
+}
+
 .menu
 {
 	width: 30%;
+	float: right;
+	display: inline-block;
 }
 
 .index

@@ -3446,7 +3446,7 @@ var $$ = {};
     }
   },
   Game: {
-    "^": "Object;player,calendar<,world,charmenu,body,index,charlist,map,menu,click_bool",
+    "^": "Object;player,calendar<,world,charmenu,body,index,charlist,map,menu,click_bool,panel_show",
     keyEvent$0: function() {
       var t1 = H.setRuntimeTypeInfo(new W._EventStream(window, C.EventStreamProvider_keydown._eventType, false), [null]);
       H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new X.Game_keyEvent_closure(this)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
@@ -3604,7 +3604,7 @@ var $$ = {};
       this.GameInit$0().then$1(new X.Game_closure(this));
     },
     static: {Game$: function() {
-        var t1 = new X.Game(null, null, null, null, null, null, null, null, null, 0);
+        var t1 = new X.Game(null, null, null, null, null, null, null, null, null, 0, 0);
         t1.Game$0();
         return t1;
       }}
@@ -3612,29 +3612,18 @@ var $$ = {};
   Game_keyEvent_closure: {
     "^": "Closure:13;this_0",
     call$1: function($event) {
-      var t1, t2, t3;
+      var t1, t2;
       if (J.get$keyCode$x($event) === 77) {
         t1 = this.this_0;
-        t2 = t1.map;
-        if (t2.hidden === true) {
-          t2.hidden = false;
-          t3 = t2.getAttribute("style");
-          if (typeof t3 !== "string")
-            return t3.$add();
-          t2.setAttribute("style", t3 + "float: left;");
-          t1 = t1.charlist;
-          t1.hidden = true;
-          t1.setAttribute("style", "width: 70%; heigth: 100%;");
-        } else {
-          t3 = t1.charlist;
-          t3.hidden = false;
-          t2 = t2.getAttribute("style");
-          if (typeof t2 !== "string")
-            return t2.$add();
-          t3.setAttribute("style", t2 + "float: left;");
-          t1 = t1.map;
-          t1.hidden = true;
-          t1.setAttribute("style", "width: 70%; heigth: 100%;");
+        t2 = t1.panel_show;
+        if (t2 === 0) {
+          J.remove$0$ax(t1.charlist);
+          t1.body.appendChild(t1.map);
+          t1.panel_show = 1;
+        } else if (t2 === 1) {
+          J.remove$0$ax(t1.map);
+          t1.body.appendChild(t1.charlist);
+          t1.panel_show = 0;
         }
       }
     }
@@ -3829,17 +3818,12 @@ var $$ = {};
       t1.body.appendChild(t1.charlist);
       t1.map.setAttribute("id", "map");
       t1.map.setAttribute("class", "map");
-      t2 = t1.map;
-      t2.hidden = true;
-      t1.body.appendChild(t2);
       t1.menu.setAttribute("id", "menu");
       t1.menu.setAttribute("class", "menu");
       t2 = t1.menu;
       t2.hidden;
       t1.body.appendChild(t2);
-      t2 = this.box_0;
-      t2.push_0.setAttribute("class", "push");
-      t1.body.appendChild(t2.push_0);
+      this.box_0.push_0.setAttribute("class", "push");
     }
   },
   Game_runGame_closure: {

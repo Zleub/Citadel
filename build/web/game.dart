@@ -15,6 +15,7 @@ class Game
 	DivElement			menu;
 
 	int					click_bool = 0;
+	int					panel_show = 0;
 
 	keyEvent()
 	{
@@ -23,19 +24,17 @@ class Game
 //			print(event.keyCode);
 			if (event.keyCode == 77)
 			{
-				if (map.hidden == true)
+				if (panel_show == 0)
 				{
-					map.hidden = false;
-					map.setAttribute("style", map.getAttribute("style") + "float: left;");
-					charlist.hidden = true;
-					charlist.setAttribute("style", "width: 70%; heigth: 100%;");
+					charlist.remove();
+					body.append(map);
+					panel_show = 1;
 				}
-				else
+				else if (panel_show == 1)
 				{
-					charlist.hidden = false;
-					charlist.setAttribute("style", map.getAttribute("style") + "float: left;");
-					map.hidden = true;
-					map.setAttribute("style", "width: 70%; heigth: 100%;");
+					map.remove();
+					body.append(charlist);
+					panel_show = 0;
 				}
 
 			}
@@ -61,8 +60,6 @@ class Game
 	{
 		map.attributes['id'] = 'map';
 		map.attributes['class'] = 'map';
-		map.hidden = true;
-		body.append(map);
 	}
 
 	menuInit()
@@ -526,7 +523,7 @@ class Game
                 mapInit();
                 menuInit();
                 push.attributes['class'] = "push";
-                body.append(push);
+//                body.append(push);
 			});
 	}
 
