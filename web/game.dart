@@ -26,14 +26,14 @@ class Game
 			{
 				if (panel_show == 0)
 				{
-					map.setAttribute("style", "display: inline-block;");
-                    charlist.setAttribute("style", "display: none;");
+					charlist.remove();
+					body.append(map);
 					panel_show = 1;
 				}
 				else if (panel_show == 1)
 				{
-					charlist.setAttribute("style", "display: inline-block;");
-					map.setAttribute("style", "display: none;");
+					map.remove();
+					body.append(charlist);
 					panel_show = 0;
 				}
 
@@ -60,8 +60,6 @@ class Game
 	{
 		map.attributes['id'] = 'map';
 		map.attributes['class'] = 'map';
-		map.hidden = true;
-		body.append(map);
 	}
 
 	menuInit()
