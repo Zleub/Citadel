@@ -525,7 +525,7 @@ class Game
                 mapInit();
                 menuInit();
                 push.attributes['class'] = "push";
-                body.append(push);
+//                body.append(push);
 			});
 	}
 
