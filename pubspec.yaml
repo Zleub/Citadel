@@ -1,6 +1,0 @@
-name: Citadel
-description: A sample citadel application
-dependencies:
-  browser: any
-dev_dependencies:
-  crypto: any
