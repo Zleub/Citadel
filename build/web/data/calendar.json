@@ -1,0 +1,53 @@
+{
+	"calendar":
+	[
+		{
+			"name": "Eat",
+			"time": 20,
+			"requirement": "none",
+			"skill_shape": "none",
+			"skill_loot": "none",
+			"skill_rand": "none"
+		},
+		{
+      "name": "Spare",
+      "time": 150,
+      "requirement": "none",
+      "skill_shape": "none",
+      "skill_loot": "none",
+      "skill_rand": "none"
+    },
+    {
+      "name": "Eat",
+      "time": 20,
+      "requirement": "none",
+      "skill_shape": "none",
+      "skill_loot": "none",
+      "skill_rand": "none"
+    },
+    {
+      "name": "Spare",
+      "time": 150,
+      "requirement": "none",
+      "skill_shape": "none",
+      "skill_loot": "none",
+      "skill_rand": "none"
+    },
+    {
+      "name": "Eat",
+      "time": 20,
+      "requirement": "none",
+      "skill_shape": "none",
+      "skill_loot": "none",
+      "skill_rand": "none"
+    },
+    {
+      "name": "Sleep",
+      "time": 240,
+      "requirement": "none",
+      "skill_shape": "none",
+      "skill_loot": "none",
+      "skill_rand": "none"
+    }
+	]
+}
